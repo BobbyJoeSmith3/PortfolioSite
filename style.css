@@ -1,0 +1,75 @@
+body {
+    font-family: 'MaruMono-Regular', Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: white;
+    background-color: #2B2B2B;
+    padding: 0px 20px;
+}
+
+.marquee {
+    position: relative;
+    font-size: 1.5rem;
+    line-height: 2;
+    border-bottom: solid 1px white;
+    height: 60px;
+    overflow: hidden;
+}
+
+@keyframes moveLeft {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-3000vw);
+    }
+}
+
+.marquee span {
+    /* shorthand brief version of the animation css rule  */
+    animation: moveLeft 400s 2s infinite linear;
+    /* keep text all on a single line */
+    white-space: nowrap;
+    /* our span in inline by default */
+    display: block;
+    /* this will let us add our animation */
+    position: absolute;
+    top: 6px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: 4fr 5fr 2fr 0fr 0fr 0fr;
+    gap: 20px;
+    width: 100%;
+    /* padding: 1rem 0.5rem; */
+    padding: 1rem 0rem;
+    transition: grid-template-columns 0.4s;
+}
+
+.gallery .project {
+    overflow: hidden;
+    opacity: 1;
+    transition: opacity 0.4s;
+}
+
+.gallery div.hide {
+    display: none;
+    opacity: 0;
+    position: absolute;
+}
+
+.gallery img {
+    max-width: 100%;
+    /* aspect-ratio: 4 / 5; */
+    object-fit: cover;
+}
+
+figure {
+    width: 100%;
+    /* padding: 0 0.5rem; */
+}
+
+.project h2 {
+    /* padding: 0 0.5rem; */
+}

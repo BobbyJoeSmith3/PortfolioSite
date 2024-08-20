@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'MaruMono-Regular';
+    src: url('Assets/Fonts/GT-Maru-Mono-Regular-Trial.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'MaruMono-Regular-Oblique';
+    src: url('Assets/Fonts/GT-Maru-Mono-Regular-Oblique-Trial.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'MonumentExtended-Ultralight';
+    src: url('Assets/Fonts/MonumentExtended-Ultralight.woff2') format('woff2');
+}
+
+h2, .marquee, figcaption, span, p {
+    font-family: 'MaruMono-Regular', Arial, Helvetica, sans-serif;
+    color: white;
+}
