@@ -23,7 +23,19 @@ let pattern = [
 
 let timeout;
 
+const allProjects = [
+    {class: '.project-1', title: 'Project One Title', pos: 0},
+    {class: '.project-2', title: 'Project Two Title', pos: 1},
+    {class: '.project-3', title: 'Project Three Title', pos: 2},
+    {class: '.project-4', title: 'Project Four Title', pos: 3},
+    {class: '.project-5', title: 'Project Five Title', pos: 4},
+    {class: '.project-6', title: 'Project Six Title', pos: 5},
+    {class: '.project-7', title: 'Project Seven Title', pos: 6},
+    {class: '.project-8', title: 'Project Eight Title', pos: 7}
+]
+
 const hideProjects = () => {
+
     slides.forEach((slide, slideIndex) => {
         if (slide.classList.contains('appear')) {
             slide.classList.add('hide')
@@ -38,14 +50,124 @@ const hideProjects = () => {
     // })
 }
 
-// hideProjects();
+
+const removeProjects = () => {
+    allProjects.forEach((currentProject, index, arr) => {
+        const e = document.querySelector(currentProject.class);
+        if (currentProject.pos < pattern[pIndex].length) {
+            // e.classList.add('disappear');
+            e.style.animation = "slideOut 1s ease-in";
+        }
+    })
+}
+
+const addProjects = () => {
+    allProjects.forEach((currentProject, index, arr) => {
+        const e = document.querySelector(currentProject.class);
+        if (currentProject.pos < pattern[pIndex].length) {
+            // e.classList.add('appear');
+            e.style.animation = "appear 1s ease-in"
+        }
+    })
+}
+
+const changeProjects = () => {
+    
+    allProjects.forEach((currentProject, index, arr) => {
+        const e = document.querySelector(currentProject.class);
+        if (currentProject.pos < pattern[pIndex].length) {
+            e.classList.add('changePositions');
+        } else {
+            e.classList.remove('changePositions');
+        }
+        // if (currentProject.pos < pattern[pIndex].length) {
+        //     // e.classList.add('appear');
+        //     e.style.animation = "slideOut 1s ease-in"
+        //     setTimeout(show, 1000);
+        //     // e.style.animation = "appear 1s ease-in"
+        // }
+    })
+}
+// const changeProjects = () => {
+    
+//     allProjects.forEach((currentProject, index, arr) => {
+//         const e = document.querySelector(currentProject.class);
+//         const show = () => {
+//             e.style.animation = "appear 0.4s ease-in-out";
+//         }
+//         if (currentProject.pos < 5) {
+//             // e.classList.add('appear');
+//             e.style.animation = "slideOut 0.4s ease-in-out";
+//             setTimeout(show, 1000);
+//             // e.style.animation = "appear 1s ease-in"
+//         }
+//         // if (currentProject.pos < pattern[pIndex].length) {
+//         //     // e.classList.add('appear');
+//         //     e.style.animation = "slideOut 1s ease-in"
+//         //     setTimeout(show, 1000);
+//         //     // e.style.animation = "appear 1s ease-in"
+//         // }
+//     })
+// }
+
+const clearClasses = () => {
+    allProjects.forEach((currentProject, index, arr) => {
+        const e = document.querySelector(currentProject.class);
+        e.classList.remove('appear');
+        e.classList.remove('disappear');
+    })
+}
+
+// const orderProjects = () => {
+//     // reorder an array by one
+//     // let arr = [1,2,3,4,5,6];
+//     // arr.push(arr.shift());
+
+//     allProjects.push(allProjects.shift());
+
+//     allProjects.forEach((currentProject, index, arr) => {
+//         currentProject.pos = index;
+//         const e = document.querySelector(currentProject.class);
+//         e.style.order = currentProject.pos;
+//         if (currentProject.pos < pattern[pIndex].length) {
+//             e.classList.add('appear');
+//         }
+//     })
+// }
+
+const reorderProjects = () => {
+    // reorder an array by one
+    // let arr = [1,2,3,4,5,6];
+    // arr.push(arr.shift());
+
+    for (let i = 0; i < pattern[pIndex].length; i++) {
+        allProjects.push(allProjects.shift());
+    }
+    
+    allProjects.forEach((currentProject, index, arr) => {
+        currentProject.pos = index;
+        const e = document.querySelector(currentProject.class);
+        e.style.order = currentProject.pos;
+    })
+
+    // allProjects.forEach((currentProject, index, arr) => {
+    //     currentProject.pos = index;
+    //     const e = document.querySelector(currentProject.class);
+    //     e.style.order = currentProject.pos;
+    //     if (currentProject.pos < pattern[pIndex].length) {
+    //         e.classList.add('appear');
+    //     }
+    // })
+}
 
 const nextSlide = () => {
     pIndex += 1
     pIndex %= pattern.length
 
-    // hideProjects();
-    setTimeout(clearClasses, 1000);
+    // setTimeout(clearClasses, 1000);
+    // clearClasses();
+    // removeProjects();
+    // setTimeout(removeProjects, 2000);
 
     section.style.gridTemplateColumns = pattern[pIndex]
         .map((p) => {
@@ -53,48 +175,15 @@ const nextSlide = () => {
         })
         .join(' ')
 
-    // hideProjects();
-    orderProjects();
-    
+    reorderProjects();
+    // setTimeout(reorderProjects, 900);
+    changeProjects();
+    // addProjects();
+    // setTimeout(addProjects, 2000);
+
 
     // clearTimeout(timeout)
     // timeout = setTimeout(nextSlide, 2000)
-}
-
-
-
-const allProjects = [
-    {class: '.project-1', title: 'Project One Title', pos: 0},
-    {class: '.project-2', title: 'Project Two Title', pos: 1},
-    {class: '.project-3', title: 'Project Three Title', pos: 2},
-    {class: '.project-4', title: 'Project Four Title', pos: 3},
-    {class: '.project-5', title: 'Project Five Title', pos: 4},
-    {class: '.project-6', title: 'Project Six Title', pos: 5}
-]
-
-const clearClasses = () => {
-    allProjects.forEach((currentProject, index, arr) => {
-        const e = document.querySelector(currentProject.class);
-        e.classList.remove('appear');
-        e.classList.remove('hide');
-    })
-}
-
-const orderProjects = () => {
-    // reorder an array by one
-    // let arr = [1,2,3,4,5,6];
-    // arr.push(arr.shift());
-
-    allProjects.push(allProjects.shift());
-
-    allProjects.forEach((currentProject, index, arr) => {
-        currentProject.pos = index;
-        const e = document.querySelector(currentProject.class);
-        e.style.order = currentProject.pos;
-        if (currentProject.pos < pattern[pIndex].length) {
-            e.classList.add('appear');
-        }
-    })
 }
 
 section.addEventListener('click', nextSlide);
