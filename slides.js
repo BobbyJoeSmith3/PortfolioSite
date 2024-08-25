@@ -12,6 +12,18 @@ let pattern = [
     [0, 0, 0, 1, 1, 1],
 ];
 
+const allProjects = [
+
+]
+
+const projectBuffer = [
+
+]
+
+const currentSlides = [
+    
+]
+
 let timeout;
 
 const hideProjects = () => {
@@ -37,13 +49,6 @@ const nextSlide = () => {
         .join(' ')
 
     hideProjects();
-    // slides.forEach((slide, slideIndex) => {
-    //     if (pattern[index][slideIndex] === 0) {
-    //         slide.classList.add('hide')
-    //     } else {
-    //         slide.classList.remove('hide')
-    //     }
-    // })
 
     // clearTimeout(timeout)
     // timeout = setTimeout(nextSlide, 2000)
