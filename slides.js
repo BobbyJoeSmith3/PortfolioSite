@@ -3,7 +3,7 @@
 =============================== */
 const allProjects = [
     { class: '.project-1', title: 'Project One Title', pos: 0, src: 'Assets/Projects/watch_the_rubble_01.jpg', keywords: ['Graphic Design', 'Photography', 'Art', 'TestA'] },
-    { class: '.project-2', title: 'Project Two Title', pos: 1, src: 'Assets/Projects/watch_the_rubble_03.jpg', keywords: ['Graphic Design', 'Photography', 'Art', 'TestA'] },
+    { class: '.project-2', title: 'Project Two Title', pos: 1, src: 'Assets/Projects/watch_the_rubble_03.jpg', keywords: ['Graphic Design', 'Photography', 'Art', 'TestA', 'TestD'] },
     { class: '.project-3', title: 'Project Three Title', pos: 2, src: 'Assets/Projects/Aglaura-1.jpg', keywords: ['Graphic Design', 'Photography', 'TestA'] },
     { class: '.project-4', title: 'Project Four Title', pos: 3, src: 'Assets/Projects/Aglaura-2.jpg', keywords: ['Graphic Design', 'Photography', 'TestA'] },
     { class: '.project-5', title: 'Project Five Title', pos: 4, src: 'Assets/Projects/watch_the_rubble_04.jpg', keywords: ['Graphic Design', 'Photography', 'Art', 'TestA'] },
@@ -82,20 +82,30 @@ const patternGenerator = (set) => {
         projectSequence.push(0);
     }
 
-    
+    // Loop gallery slides when end is reached
     if (projectBufferIndex === projectSequence.length) {
         projectBufferIndex = 0;
     }
     
+    // Loop gallery slides one project at a time
     if (projectSequence.length - pattern.length < projectBufferIndex) {
         projectBufferIndex = 0;
         patternIndex = -1;
     }
-    
+
+    // Generate the pattern based on how many projects are in the buffer
     // splice every entry at gridPattern[patternIndex] into projectSequence[] at projectBufferIndex, replacing the numbers that are currently there
-    // if you reach the end of the buffer, then have the pattern loop to the beginning
-    for (let i = 0; i < pattern.length; i++) {
-        projectSequence.splice(projectBufferIndex + i, 1, pattern[i]);
+    if (setSize === 1) {
+        projectSequence = [1];
+        document.querySelector('img').style.maxHeight= '80vh';
+    } else if (setSize <= 3) { 
+        for (let i = 0; i < setSize; i++) {
+            projectSequence.splice(projectBufferIndex + i, 1, 1);
+        }
+    } else {
+        for (let i = 0; i < pattern.length; i++) {
+            projectSequence.splice(projectBufferIndex + i, 1, pattern[i]);
+        }
     }
     
     // iterate projectBufferIndex only if the current sequence has 4 fractions or is last sequence in gridPattern
@@ -185,8 +195,4 @@ timeout = setTimeout(nextSlide, 6000);
 
 
 
-
-
-// TODO: Handle edge cases when projectBuffer length is less than 5, including 0
-// TODO: Handle edge cases when all project keyword filters are unselected (display all projects);
 // TODO: Create a less jarring transition when the project gallery is updated

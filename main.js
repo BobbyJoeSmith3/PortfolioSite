@@ -25,22 +25,28 @@ kw_buttons.forEach((element) => {
             // otherwise append the keyword to the selectedKeywords list
             selectedKeyWords.push(element.name);
         }
-        // Repopulate the project buffer based on the revised selectedKeywords list. If no keyword filters are selected, then add all projects.
-        if (selectedKeyWords.length === 0) {
-            populateAllProjects();
-        } else {
-            populateProjectBuffer();
-        }
-        
-        
-        // Remove all of the previous project divs from the gallery
-        clearGallery();
-        // And add new ones based on the revised selectedKeywords list
-        populateGallery();
-        // Generate grid template pattern
-        patternGenerator(projectBuffer);
-        console.log(selectedKeyWords);
+
+        // Repopulate the projectBuffer based on the revised selectedKeywords list.
+        filterKeywords();
     })
 })
 
-//
+// Display projects in the gallery based on the filters selected in the control-bar
+const filterKeywords = () => {
+    //  If no keyword filters are selected, then add all projects to the projectBuffer.
+    if (selectedKeyWords.length === 0) {
+        populateAllProjects();
+    } else {
+        populateProjectBuffer();
+    }
+
+    // Remove all of the previous project divs from the gallery
+    clearGallery();
+    // And add new ones based on the revised selectedKeywords list
+    populateGallery();
+    // Bring the gridPattern back to the start
+    patternIndex = 0;
+    // Generate grid template pattern
+    patternGenerator(projectBuffer);
+    console.log(selectedKeyWords);
+}
