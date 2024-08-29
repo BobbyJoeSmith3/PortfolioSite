@@ -138,3 +138,8 @@ figure {
     color: #2B2B2B;
     /* color: #E4F180; */
 }
+
+button.selected {
+    background-color: #F6600B;
+    color: white;
+}

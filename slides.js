@@ -2,16 +2,19 @@
     Project Database
 =============================== */
 const allProjects = [
-    { class: '.project-1', title: 'Project One Title', pos: 0, src: 'Assets/Projects/watch_the_rubble_01.jpg', keywords: ['Graphic Design', 'Photography', 'Art'] },
-    { class: '.project-2', title: 'Project Two Title', pos: 1, src: 'Assets/Projects/watch_the_rubble_03.jpg', keywords: ['Graphic Design', 'Photography', 'Art'] },
-    { class: '.project-3', title: 'Project Three Title', pos: 2, src: 'Assets/Projects/Aglaura-1.jpg', keywords: ['Graphic Design', 'Photography'] },
-    { class: '.project-4', title: 'Project Four Title', pos: 3, src: 'Assets/Projects/Aglaura-2.jpg', keywords: ['Graphic Design', 'Photography'] },
-    { class: '.project-5', title: 'Project Five Title', pos: 4, src: 'Assets/Projects/watch_the_rubble_04.jpg', keywords: ['Graphic Design', 'Photography', 'Art'] },
-    { class: '.project-6', title: 'Project Six Title', pos: 5, src: 'Assets/Projects/Aglaura-3.jpg', keywords: ['Graphic Design', 'Photography'] },
-    { class: '.project-7', title: 'Project Seven Title', pos: 6, src: 'Assets/Projects/Baltimore-01.jpg', keywords: ['Photography'] },
-    { class: '.project-8', title: 'Project Eight Title', pos: 7, src: 'Assets/Projects/Baltimore-02.jpg', keywords: ['Photography'] },
-    { class: '.project-9', title: 'Project Nine Title', pos: 8, src: 'Assets/Projects/Baltimore-03.jpg', keywords: ['Photography'] },
-    { class: '.project-10', title: 'Project Ten Title', pos: 9, src: 'Assets/Projects/Aglaura-4.jpg', keywords: ['Graphic Design', 'Photography'] }
+    { class: '.project-1', title: 'Project One Title', pos: 0, src: 'Assets/Projects/watch_the_rubble_01.jpg', keywords: ['Graphic Design', 'Photography', 'Art', 'TestA'] },
+    { class: '.project-2', title: 'Project Two Title', pos: 1, src: 'Assets/Projects/watch_the_rubble_03.jpg', keywords: ['Graphic Design', 'Photography', 'Art', 'TestA'] },
+    { class: '.project-3', title: 'Project Three Title', pos: 2, src: 'Assets/Projects/Aglaura-1.jpg', keywords: ['Graphic Design', 'Photography', 'TestA'] },
+    { class: '.project-4', title: 'Project Four Title', pos: 3, src: 'Assets/Projects/Aglaura-2.jpg', keywords: ['Graphic Design', 'Photography', 'TestA'] },
+    { class: '.project-5', title: 'Project Five Title', pos: 4, src: 'Assets/Projects/watch_the_rubble_04.jpg', keywords: ['Graphic Design', 'Photography', 'Art', 'TestA'] },
+    { class: '.project-6', title: 'Project Six Title', pos: 5, src: 'Assets/Projects/Aglaura-3.jpg', keywords: ['Graphic Design', 'Photography', 'TestB'] },
+    { class: '.project-7', title: 'Project Seven Title', pos: 6, src: 'Assets/Projects/Baltimore-01.jpg', keywords: ['Photography', 'TestB'] },
+    { class: '.project-8', title: 'Project Eight Title', pos: 7, src: 'Assets/Projects/Baltimore-02.jpg', keywords: ['Photography', 'TestB'] },
+    { class: '.project-9', title: 'Project Nine Title', pos: 8, src: 'Assets/Projects/Baltimore-03.jpg', keywords: ['Photography', 'TestB'] },
+    { class: '.project-10', title: 'Project Ten Title', pos: 9, src: 'Assets/Projects/Aglaura-4.jpg', keywords: ['Graphic Design', 'Photography', 'TestB'] },
+    { class: '.project-11', title: 'Project Eleven Title', pos: 10, src: 'Assets/Projects/Baltimore-04.jpg', keywords: ['Photography', 'TestC'] },
+    { class: '.project-12', title: 'Project Twelve Title', pos: 11, src: 'Assets/Projects/Baltimore-05.jpg', keywords: ['Photography', 'TestC'] },
+    { class: '.project-13', title: 'Project Thirteen Title', pos: 12, src: 'Assets/Projects/Baltimore-06.jpg', keywords: ['Photography', 'TestC'] }
 ];
 
 /* ===============================
@@ -41,19 +44,27 @@ let gridPattern = [
 let projectBuffer = new Set();
 
 // The list of keywords users have selected
-const selectedKeyWords = ['Graphic Design', 'Photography'];
+const selectedKeyWords = [];
 
 // To automate the movement of the gallery
 let timeout;
 
 
 const populateProjectBuffer = () => {
+    // Clear the projectBuffer Set
+    projectBuffer.clear();
     allProjects.forEach((project) => {
         selectedKeyWords.forEach((key) => {
             if (project.keywords.includes(key)) {
                 projectBuffer.add(project);
             }
         })
+    })
+}
+
+const populateAllProjects = () => {
+    allProjects.forEach((project) => {
+        projectBuffer.add(project);
     })
 }
 
@@ -77,16 +88,13 @@ const patternGenerator = (set) => {
     }
     
     if (projectSequence.length - pattern.length < projectBufferIndex) {
-        console.log('Last project reached, looping back.');
         projectBufferIndex = 0;
         patternIndex = -1;
-        // projectSequence.splice(projectBufferIndex, 3, 4, 5, 2);
     }
     
     // splice every entry at gridPattern[patternIndex] into projectSequence[] at projectBufferIndex, replacing the numbers that are currently there
     // if you reach the end of the buffer, then have the pattern loop to the beginning
     for (let i = 0; i < pattern.length; i++) {
-        console.log('Not on last project');
         projectSequence.splice(projectBufferIndex + i, 1, pattern[i]);
     }
     
@@ -111,13 +119,12 @@ const patternGenerator = (set) => {
         return `${p}fr`
     }).join(' ');
 
-    // patternIndex++;
     return projectSequence;
 
 }
 
 // Create and add divs in the gallery section based on the keywords that are selected
-const createProjectElements = () => {
+const populateGallery = () => {
 
     for (let project of projectBuffer) {
         // create the elements
@@ -146,36 +153,13 @@ const createProjectElements = () => {
     }
 }
 
-
-// const hideProjects = (patternArray) => {
-//     slides = gallery.querySelectorAll('.project');
-//     console.log(slides);
-//     slides.forEach((slide, slideIndex) => {
-//         if (patternArray[slideIndex] === 0) {
-//             slide.classList.add('hide')
-//         } else {
-//             slide.classList.remove('hide')
-//         }
-//     })
-// }
-// const hideProjects = () => {
-//     slides = gallery.querySelectorAll('.project');
-//     console.log(slides);
-//     slides.forEach((slide, slideIndex) => {
-//         if (pattern[patternIndex][slideIndex] === 0) {
-//             slide.classList.add('hide')
-//         } else {
-//             slide.classList.remove('hide')
-//         }
-//     })
-// }
-
-
+// Remove all of the project divs from the gallery section
 const clearGallery = () => {
     let deleteThese = document.querySelectorAll('.project');
     deleteThese.forEach((element) => element.remove());
 }
 
+// Advance to the next project in the projects gallery
 const nextSlide = () => {
     // Iterate patternIndex and loop if at the end of gridPattern array
     (patternIndex < gridPattern.length - 1) ? patternIndex++ : patternIndex = 0;
@@ -188,9 +172,9 @@ const nextSlide = () => {
 
 // function to populate the gallery when page is loaded
 const loadGalleryAtStart = () => {
-    populateProjectBuffer();
+    populateAllProjects();
     patternGenerator(projectBuffer);
-    createProjectElements();
+    populateGallery();
 }
 
 loadGalleryAtStart();
@@ -203,6 +187,6 @@ timeout = setTimeout(nextSlide, 6000);
 
 
 
-// TODO: Create a function that clears all projects from the dom
-// let deleteThese = document.querySelectorAll('.project');
-// deleteThese.forEach((element) => element.remove());
+// TODO: Handle edge cases when projectBuffer length is less than 5, including 0
+// TODO: Handle edge cases when all project keyword filters are unselected (display all projects);
+// TODO: Create a less jarring transition when the project gallery is updated
