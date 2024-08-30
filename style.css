@@ -50,7 +50,7 @@ body {
 .gallery .project {
     overflow: hidden;
     opacity: 1;
-    transition: opacity 0.4s;
+    transition: opacity 0.2s ease;
     /* padding: 0 0.5rem; */
 }
 

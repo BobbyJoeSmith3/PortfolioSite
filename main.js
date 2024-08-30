@@ -16,7 +16,6 @@ const kw_buttons = document.querySelectorAll('button');
 kw_buttons.forEach((element) => {
     element.addEventListener('click', () => {
         element.classList.toggle('selected');
-        console.log(element.name);
         if (selectedKeyWords.includes(element.name)) {
             // if the selected keyword is already on the selectedKeywords list find its index and remove it
             const kw_index = selectedKeyWords.indexOf(element.name);
@@ -40,13 +39,25 @@ const filterKeywords = () => {
         populateProjectBuffer();
     }
 
-    // Remove all of the previous project divs from the gallery
-    clearGallery();
-    // And add new ones based on the revised selectedKeywords list
-    populateGallery();
-    // Bring the gridPattern back to the start
-    patternIndex = 0;
-    // Generate grid template pattern
-    patternGenerator(projectBuffer);
-    console.log(selectedKeyWords);
+    // Fadeout Projects
+    hideAllProjects();
+
+    // wait for the projects to fade out before removing from DOM
+    const hiddenProjects = document.querySelectorAll('.hide');
+    hiddenProjects.forEach((project) => {
+        project.ontransitionend = () => {
+            // Remove all of the previous project divs from the gallery
+            clearGallery();
+            // And add new ones based on the revised selectedKeywords list
+            populateGallery();
+            // Bring the gridPattern back to the start
+            patternIndex = 0;
+            // Generate grid template pattern
+            patternGenerator(projectBuffer);
+        }
+    })
+
+    // Reset the automated timer when a filter is applied
+    clearTimeout(timeout);
+    timeout = setTimeout(nextSlide, 4000);
 }

@@ -114,23 +114,35 @@ const patternGenerator = (set) => {
     } 
     
 
-    // Extra precaution to hide slides
-    slides = gallery.querySelectorAll('.project');
-    slides.forEach((slide, slideIndex) => {
-        if (projectSequence[slideIndex] === 0) {
-            slide.classList.add('hide')
-        } else {
-            slide.classList.remove('hide')
-        }
-    })
-
     // Set gallery gridtemplate
     gallery.style.gridTemplateColumns = projectSequence.map((p) => {
         return `${p}fr`
     }).join(' ');
 
-    return projectSequence;
+    // Extra precaution to hide slides
+    slides = gallery.querySelectorAll('.project');
+    slides.forEach((slide, slideIndex) => {
+        if (projectSequence[slideIndex] === 0) {
+            slide.classList.add('hide');
+        } else {
+            // without the timeout, projects will appear too fast to trigger the fade-in transition
+            setTimeout(() => {
+                slide.classList.remove('hide');
+            }, 100);
+        }
+    })
 
+    // return projectSequence;
+
+}
+
+// Hide projects. 
+// Needed to trigger fade-in and out transitions
+const hideAllProjects = () => {
+    slides = gallery.querySelectorAll('.project');
+    slides.forEach((slide, slideIndex) => {
+        slide.classList.add('hide');
+    })
 }
 
 // Create and add divs in the gallery section based on the keywords that are selected
@@ -139,7 +151,7 @@ const populateGallery = () => {
     for (let project of projectBuffer) {
         // create the elements
         const newDiv = document.createElement('div');
-        newDiv.setAttribute('class', 'project');
+        newDiv.setAttribute('class', 'project hide');
         const newH2 = document.createElement('h2');
         newH2.textContent = project.title;
         
@@ -176,15 +188,16 @@ const nextSlide = () => {
 
     patternGenerator(projectBuffer);
 
-    clearTimeout(timeout)
-    timeout = setTimeout(nextSlide, 4000)
+    // Reset the automated timer
+    clearTimeout(timeout);
+    timeout = setTimeout(nextSlide, 4000);
 }
 
 // function to populate the gallery when page is loaded
 const loadGalleryAtStart = () => {
     populateAllProjects();
-    patternGenerator(projectBuffer);
     populateGallery();
+    patternGenerator(projectBuffer);
 }
 
 loadGalleryAtStart();
@@ -194,5 +207,3 @@ gallery.addEventListener('click', nextSlide);
 timeout = setTimeout(nextSlide, 6000);
 
 
-
-// TODO: Create a less jarring transition when the project gallery is updated
