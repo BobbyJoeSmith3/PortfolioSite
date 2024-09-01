@@ -105,7 +105,7 @@ figure {
 }
 
 #contact_btn {
-    background-color:#2B2B2B;
+    background: none;
     border: none;
 }
 
@@ -144,3 +144,79 @@ button.selected {
     background-color: #F6600B;
     color: white;
 }
+
+.project-gallery #back_btn {
+    position: relative;
+    display: block;
+    padding: 0.8rem 1rem;
+    z-index: 1;
+}
+
+.main-carousel {
+    padding-bottom: 1rem;
+}
+
+.carousel-cell {
+    padding-left: 1rem;
+}
+
+.carousel-cell img {
+    max-height: 80vh;
+}
+
+/* position dots in carousel */
+
+/* white circles */
+.flickity-page-dots .dot {
+    width: 12px;
+    height: 12px;
+    opacity: 1;
+    background: transparent;
+    border: 2px solid white;
+}
+
+/* fill-in selected dot */
+.flickity-page-dots .dot.is-selected {
+    background: white;
+}
+
+/* smaller, dark, rounded square */
+.flickity-button {
+    background: none;
+}
+
+.flickity-button:hover {
+    background: #F6600B;
+}
+
+.flickity-prev-next-button {
+    width: 5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    height: 30px;
+    border-radius: 5px;
+}
+
+/* icon color */
+.flickity-button-icon {
+    fill: white;
+
+    display: inline-block;
+}
+
+
+/* Altered Value */
+.carousel-nav {
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: auto;
+    column-gap: 2rem;
+    border-top: solid 1px white;
+    border-bottom: solid 1px white;
+}
+
+
