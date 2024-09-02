@@ -219,4 +219,44 @@ button.selected {
     border-bottom: solid 1px white;
 }
 
+.project-gallery-header {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    align-items: center;
+}
+
+.project-gallery-header h1 {
+    justify-self: center;
+}
+
+.project-info {
+    display: grid;
+    grid-template-columns: 2fr 4fr 2fr;
+    padding: 2rem 1rem;
+}
+
+.project-description {
+    justify-self: center;
+    max-width: 50rem;
+    line-height: 1.5;
+}
+
+.project-description p {
+    margin-bottom: 1.5rem;
+}
+
+dl {
+
+}
+
+dt {
+    margin-top: 1.5rem;
+    line-height: 1.2;
+
+}
+
+dd {
+    line-height: 1.2;
+}
+
 
