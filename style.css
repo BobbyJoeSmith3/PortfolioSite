@@ -259,4 +259,32 @@ dd {
     line-height: 1.2;
 }
 
+.bg-marquee {
+    position: absolute;
+    z-index: -1;
+    max-width: 100%;
+    overflow: hidden;
+}
 
+/* .bg-text h1 {
+    font: 800 40px Arial;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px;
+} */
+
+.bg-marquee svg {
+    height: 80vh;
+    stroke: #6b6b6b;
+    /* shorthand brief version of the animation css rule  */
+    animation: scrollLeft 10s 2s infinite linear;
+}
+
+@keyframes scrollLeft {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
