@@ -80,6 +80,10 @@ figure {
     font-size: 1.2rem;
 }
 
+h1 {
+    font-size: 1.5rem;
+}
+
 .control-bar {
     position: fixed;
     bottom: 1vh;
