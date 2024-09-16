@@ -8,6 +8,8 @@
     <title>Bobby Joe Smith III | Portfolio</title>
     <link href="base.css" type="text/css" rel="stylesheet">
     <link href="fonts.css" type="text/css" rel="stylesheet">
+    <!-- Flickity Plugin -->
+    <link href="flickity.css" type="text/css" rel="stylesheet">
     <link href="style.css" type="text/css" rel="stylesheet">
 </head>
 
@@ -20,7 +22,7 @@
         School of Design (MFA), and received an MFA in Media Art from the University of California—Los Angeles.</span>
     </section>
     
-    <section class="gallery bg-marquee"></section>
+    <section class="gallery bg-marquee main-carousel"></section>
         
     <section class="control-bar">
         <button id="contact_btn" popovertarget="contactinfo" popovertargetaction="toggle"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
@@ -34,17 +36,24 @@
             <a href="https://github.com/BobbyJoeSmith3" target="_blank">Github</a>
             <a href="https://www.linkedin.com/in/bobby-joe-smith-iii-32165b2a/" target="_blank">LinkedIn</a>
         </div>
-        <button type="button" id="graphicdesign_btn" class="button" name="Graphic Design">Graphic Design</button>
-        <button type="button" id="photography_btn" class="button" name="Photography">Photography</button>
-        <button type="button" id="art_btn" class="button" name="Art">Art</button>
-        <button type="button" id="testa_btn" class="button" name="TestA">Test A</button>
-        <button type="button" id="testb_btn" class="button" name="TestB">Test B</button>
-        <button type="button" id="testc_btn" class="button" name="TestC">Test C</button>
-        <button type="button" id="testd_btn" class="button" name="TestD">Test D</button>
+        <div class="filters">
+            <button type="button" id="graphicdesign_btn" class="button" name="Graphic Design">Graphic Design</button>
+            <button type="button" id="photography_btn" class="button" name="Photography">Photography</button>
+            <button type="button" id="art_btn" class="button" name="Art">Art</button>
+            <button type="button" id="testa_btn" class="button" name="TestA">Test A</button>
+            <button type="button" id="testb_btn" class="button" name="TestB">Test B</button>
+            <button type="button" id="testc_btn" class="button" name="TestC">Test C</button>
+            <button type="button" id="testd_btn" class="button" name="TestD">Test D</button>
+
+        </div>
+        <div class="carousel-nav"></div>
     </section>
+    <!-- Flickity Plugin -->
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     <script src="marquee.js"></script>
-    <script src="main.js"></script>
     <script src="slides.js"></script>
+    <script src="main.js"></script>
+    <!-- <script src="project_page.js"></script> -->
 
 </body>
 

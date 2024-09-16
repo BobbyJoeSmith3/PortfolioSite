@@ -1,3 +1,8 @@
+:root {
+    --after-content: '';
+
+}
+
 body {
     font-family: 'MaruMono-Regular', Arial, Helvetica, sans-serif;
     font-size: 16px;
@@ -14,6 +19,7 @@ body {
     height: 5rem;
     overflow: hidden;
 }
+
 
 @keyframes moveLeft {
     0% {
@@ -87,7 +93,7 @@ h1 {
 .control-bar {
     position: fixed;
     bottom: 1vh;
-    display: inline-flex;
+    display: flex;
     align-items: center;
     gap: 10px;
     padding: 0 1rem;
@@ -167,8 +173,10 @@ button.selected {
     padding-bottom: 1rem;
 }
 
-.carousel-cell {
-    padding-left: 1rem;
+
+/* only add padding when in carousel mode */
+.flickity-slider .carousel-cell {
+    padding: 0 1rem;
 }
 
 .carousel-cell img {
@@ -267,12 +275,10 @@ dd {
 
 @keyframes scrollLeft {
     0% {
-        /* transform: translate3d(0, 0, 0);; */
         background-position-x: 0%;
     }
 
     100% {
-        /* transform: translate3d(-1692px, 0, 0); */
         background-position-x: 100%;
     }
 }
@@ -284,3 +290,42 @@ dd {
     min-height: 90vh;
     animation: scrollLeft 1000s 2s infinite linear;
 }
+
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.display-none {
+    display: none;
+}
+
+.hidden {
+    display: none;
+    opacity: 0;
+}
+
+
+/* external css: flickity.css */
+
+
+
+/* flickity on by default */
+/* .main-carousel::after {
+    content: 'flickity';
+    display: none;
+} */
+
+.main-carousel::after {
+    content: var(--after-content);
+    display: none;
+}
+
+/* @media screen and (min-width: 850px) {
+
+    .main-carousel::after {
+        content: var(--after-content);
+    }
+} */

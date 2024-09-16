@@ -151,7 +151,7 @@ const populateGallery = () => {
     for (let project of projectBuffer) {
         // create the elements
         const newDiv = document.createElement('div');
-        newDiv.setAttribute('class', 'project hide');
+        newDiv.setAttribute('class', 'project carousel-cell hide');
         const newH2 = document.createElement('h2');
         newH2.textContent = project.title;
         
@@ -189,8 +189,8 @@ const nextSlide = () => {
     patternGenerator(projectBuffer);
 
     // Reset the automated timer
-    clearTimeout(timeout);
-    timeout = setTimeout(nextSlide, 4000);
+    // clearTimeout(timeout);
+    // timeout = setTimeout(nextSlide, 4000);
 }
 
 // function to populate the gallery when page is loaded
@@ -204,6 +204,6 @@ loadGalleryAtStart();
 gallery.addEventListener('click', nextSlide);
 
 // Wait a few seconds after loading the page before beginning the automatic gallery slideshow
-timeout = setTimeout(nextSlide, 6000);
+// timeout = setTimeout(nextSlide, 6000);
 
 

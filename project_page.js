@@ -5,7 +5,8 @@ var flkty = new Flickity(elem, {
     autoPlay: true,
     cellAlign: 'left',
     contain: true,
-    wrapAround: true
+    wrapAround: true,
+    // fullscreen: true,
 });
 
 // element argument can be a selector string
