@@ -84,7 +84,7 @@ let content_none = "''";
 const flkty = new Flickity(carousel, {
     // options
     draggable: '>1',
-    autoPlay: false,
+    autoPlay: true,
     cellAlign: 'left',
     contain: true,
     wrapAround: true,
@@ -106,63 +106,82 @@ const changeGalleryToCarousel = () => {
 
 }
 
-
-const changeGalleryModes = (x) => {
-    console.log(x.matches);
-    if (x.matches === true && galleryModesChanged === false) {
-        changeGalleryToCarousel();
-        // have to trigger a resize event inorder to activate flickity when page is opened at small size
-        // this solution works across browsers
-        if (typeof (Event) === 'function') {
-            // modern browsers
-            window.dispatchEvent(new Event('resize'));
-        } else {
-            // for IE and other old browsers
-            // causes deprecation warning on modern browsers
-            var evt = window.document.createEvent('UIEvents');
-            evt.initUIEvent('resize', true, false, window, 0);
-            window.dispatchEvent(evt);
-        }
-        galleryModesChanged = true;
+const changeCarouselToGallery = () => {
+    // clearTimeout(timeout);
+    carousel.classList.replace('main-carousel', 'gallery');
+    projects.forEach((project) => {
+        project.classList.remove('hide');
+        // project.classList.add('carousel-cell');
+    });
+    if (selectedKeyWords.length === 0) {
+        clearGallery();
+        loadGalleryAtStart();
+        console.log('there were no selected words')
+    } else {
+        filterKeywords();
     }
+    
 
+    r.style.setProperty('--after-content', content_none);
+    
+    // Reset the automated timer
+    clearTimeout(timeout);
+    timeout = setTimeout(nextSlide, 4000);
 }
 
-// function changeGalleryModes(x) {
-//     if (x.matches === true) {
-//         changeGalleryToCarousel();
-        
-//         galleryModesChanged = true;
-//     }
 
-// }
+const changeGalleryModes = (x) => {
+    if (x.matches === true) {
+        changeGalleryToCarousel();
+
+        if (galleryModesChanged === false) {
+            triggerResizeEvent();
+        }
+    } else if (x.matches === false && galleryModesChanged === true) {
+        changeCarouselToGallery();
+        changeNavToFilter();
+    }
+    
+    galleryModesChanged = true;
+}
+
+const triggerResizeEvent = () => {
+    // have to trigger a resize event inorder to activate flickity when page is opened at small size
+    // this solution works across browsers
+    if (typeof (Event) === 'function') {
+        // modern browsers
+        window.dispatchEvent(new Event('resize'));
+    } else {
+        // for IE and other old browsers
+        // causes deprecation warning on modern browsers
+        var evt = window.document.createEvent('UIEvents');
+        evt.initUIEvent('resize', true, false, window, 0);
+        window.dispatchEvent(evt);
+    }
+}
 
 
 const changeFilterToNav = (mutationList) => {
-    console.log(mutationList);
-    const prev_btn = document.querySelector('.previous');
-    const next_btn = document.querySelector('.next');
-    const page_dots = document.querySelector('.flickity-page-dots');
+    let prev_btn = document.querySelector('.previous');
+    let next_btn = document.querySelector('.next');
+    let page_dots = document.querySelector('.flickity-page-dots');
 
     for(let mutation of mutationList) {
         // Check MutationRecord for added children with a class of previous, next, or flickity-page-dots
         if (mutation.addedNodes.length >= 1) {
             if (mutation.addedNodes[0].classList.contains('previous')) {
-                console.log('previous button created!');
                 const prev_txt = document.createElement('span');
                 prev_txt.textContent = "prev";
                 prev_btn.appendChild(prev_txt);
                 car_nav.appendChild(prev_btn);
             }
             if (mutation.addedNodes[0].classList.contains('next')) {
-                console.log('next button created!');
                 const next_txt = document.createElement('span');
                 next_txt.textContent = "next";
                 next_btn.insertBefore(next_txt, next_btn.querySelector('.flickity-button-icon'));
                 car_nav.appendChild(next_btn);
             }
             if (mutation.addedNodes[0].classList.contains('flickity-page-dots')) {
-                console.log('page dots created!');
                 car_nav.insertBefore(page_dots, next_btn);
             }
         }
@@ -171,6 +190,19 @@ const changeFilterToNav = (mutationList) => {
 
     filters.classList.add('display-none');
     car_nav.classList.remove('display-none');
+}
+
+const changeNavToFilter = () => {
+    let prev_btn = document.querySelector('.previous');
+    let next_btn = document.querySelector('.next');
+    let page_dots = document.querySelector('.flickity-page-dots');
+
+    gallery.appendChild(prev_btn);
+    gallery.appendChild(next_btn);
+    gallery.appendChild(page_dots);
+
+    filters.classList.remove('display-none');
+    car_nav.classList.add('display-none');
 }
 
 // config for which mutations to watch for

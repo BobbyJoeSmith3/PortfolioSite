@@ -189,8 +189,8 @@ const nextSlide = () => {
     patternGenerator(projectBuffer);
 
     // Reset the automated timer
-    // clearTimeout(timeout);
-    // timeout = setTimeout(nextSlide, 4000);
+    clearTimeout(timeout);
+    timeout = setTimeout(nextSlide, 4000);
 }
 
 // function to populate the gallery when page is loaded
@@ -204,6 +204,6 @@ loadGalleryAtStart();
 gallery.addEventListener('click', nextSlide);
 
 // Wait a few seconds after loading the page before beginning the automatic gallery slideshow
-// timeout = setTimeout(nextSlide, 6000);
+timeout = setTimeout(nextSlide, 6000);
 
 
