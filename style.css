@@ -1,5 +1,5 @@
 :root {
-    --after-content: '';
+    --after-content: 'flickity';
 
 }
 
@@ -12,11 +12,12 @@ body {
 }
 
 .marquee {
+    background-color: #F6600B;
     position: relative;
     font-size: 2rem;
-    line-height: 2;
+    line-height: 1;
     border-bottom: solid 1px white;
-    height: 5rem;
+    height: 3rem;
     overflow: hidden;
 }
 
@@ -43,29 +44,20 @@ body {
     top: 6px;
 }
 
-.gallery {
-    display: grid;
-    /* grid-template-columns: 4fr 5fr 2fr 0fr 0fr 0fr; */
-    gap: 0;
-    width: 100%;
-    padding: 1rem 0.5rem;
-    transition: grid-template-columns 0.4s;
-    justify-items: center;
-}
 
 
-.gallery .project {
+.main-carousel .project {
     overflow: hidden;
     opacity: 1;
     transition: opacity 0.2s ease;
-    /* padding: 0 0.5rem; */
+
 }
 
-.gallery div.hide {
+.main-carousel div.hide {
     opacity: 0;
 }
 
-.gallery img {
+.main-carousel img {
     max-width: 100%;
     /* aspect-ratio: 4 / 5; */
     object-fit: cover;
@@ -170,6 +162,7 @@ button.selected {
 }
 
 .main-carousel {
+    /* height: 90%; */
     padding-bottom: 1rem;
 }
 
@@ -228,6 +221,9 @@ button.selected {
 
 /* Altered Value */
 .carousel-nav {
+    position: fixed;
+    bottom: 6.5vh;
+    width: 100%;
     height: 3rem;
     display: flex;
     justify-content: center;
@@ -284,7 +280,11 @@ dd {
 }
 
 .bg-marquee {
-    background: url('Assets/bjs_3.svg') repeat-x;
+    position: absolute;
+    height: 90%;
+    width: 100%;
+    /* background: url('Assets/bjs_3.svg') repeat-x; */
+    background: url('Assets/bobbyjoesmithiii.svg') repeat-x;
     background-size: auto 84vh;
     background-position-y: 0.9rem;
     min-height: 90vh;
@@ -308,24 +308,8 @@ dd {
 }
 
 
-/* external css: flickity.css */
 
 
 
-/* flickity on by default */
-/* .main-carousel::after {
-    content: 'flickity';
-    display: none;
-} */
 
-.main-carousel::after {
-    content: var(--after-content);
-    display: none;
-}
 
-/* @media screen and (min-width: 850px) {
-
-    .main-carousel::after {
-        content: var(--after-content);
-    }
-} */
