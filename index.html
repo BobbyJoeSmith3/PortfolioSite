@@ -10,6 +10,7 @@
     <link href="CSS/fonts.css" type="text/css" rel="stylesheet">
     <!-- Flickity Plugin -->
     <link href="CSS/flickity.css" type="text/css" rel="stylesheet">
+    <link href="https://unpkg.com/flickity-fullscreen@1/fullscreen.css" rel="stylesheet" >
     <link href="CSS/style.css" type="text/css" rel="stylesheet">
 </head>
 
@@ -23,7 +24,7 @@
     </section>
     <section class="bg-marquee"></section>
 
-    <section class="main-carousel">
+    <section class="main-carousel" data-flickity='{ "fullscreen": true }'>
         <div class="project carousel-cell">
             <h2>Project One Title</h2>
             <figure><img class="carousel-cell-image" src="Assets/Demo/SMSL-1.jpg">
@@ -100,6 +101,7 @@
     </section>
     <!-- Flickity Plugin -->
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <script src="https://unpkg.com/flickity-fullscreen@1/fullscreen.js"></script>
     <script src="JS/marquee.js"></script>
     <script src="JS/main.js"></script>
 

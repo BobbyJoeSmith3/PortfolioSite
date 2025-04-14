@@ -160,15 +160,8 @@ button.selected {
 }
 
 /* smaller, dark, rounded square */
-.flickity-button {
-    background: none;
-}
-
-.flickity-button:hover {
-    background: #F6600B;
-}
-
 .flickity-prev-next-button {
+    background: none;
     width: 5rem;
     display: inline-flex;
     align-items: center;
@@ -176,6 +169,10 @@ button.selected {
     text-transform: uppercase;
     height: 30px;
     border-radius: 5px;
+}
+
+.flickity-button:hover {
+    background: #F6600B;
 }
 
 /* icon color */
@@ -230,6 +227,24 @@ button.selected {
     gap: 1rem;
 }
 
+
+/* .is-fullscreen added to carousel when fullscreen
+   size cells to full height when fullscreen */
+.carousel.is-fullscreen .carousel-cell {
+    height: 100%;
+}
+
+.carousel.is-fullscreen .carousel-cell-image {
+    max-height: 84vh;
+}
+
+.flickity-fullscreen-button {
+    position: absolute;
+    right: 1.2rem;
+    top: 3.6rem;
+    background-color:rgb(114, 114, 114);
+    z-index: 1;
+}
 
 
 
