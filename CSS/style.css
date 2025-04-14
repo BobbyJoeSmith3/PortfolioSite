@@ -39,25 +39,6 @@ body {
     top: 6px;
 }
 
-
-
-.main-carousel .project {
-    overflow: hidden;
-    opacity: 1;
-    transition: opacity 0.2s ease;
-
-}
-
-.main-carousel div.hide {
-    opacity: 0;
-}
-
-.main-carousel img {
-    max-width: 100%;
-    /* aspect-ratio: 4 / 5; */
-    object-fit: cover;
-}
-
 figure {
     width: 100%;
     padding: 0 0.5rem;
@@ -154,14 +135,12 @@ button.selected {
     padding-bottom: 1rem;
 }
 
-
-/* only add padding when in carousel mode */
-.flickity-slider .carousel-cell {
-    padding: 0 1rem;
+.carousel-cell {
+    margin-left: 1rem;
 }
 
-.carousel-cell img {
-    max-height: 80vh;
+.carousel-cell-image {
+    max-height: 70vh;
 }
 
 /* position dots in carousel */
@@ -202,7 +181,6 @@ button.selected {
 /* icon color */
 .flickity-button-icon {
     fill: white;
-
     display: inline-block;
 }
 
@@ -223,16 +201,6 @@ button.selected {
 }
 
 
-
-dt {
-    margin-top: 1.5rem;
-    line-height: 1.2;
-}
-
-dd {
-    line-height: 1.2;
-}
-
 @keyframes scrollLeft {
     0% {
         background-position-x: 0%;
@@ -247,8 +215,8 @@ dd {
     position: absolute;
     height: 90%;
     width: 100%;
-    /* background: url('Assets/bjs_3.svg') repeat-x; */
-    background: url('Assets/bobbyjoesmithiii.svg') repeat-x;
+    /* background: url('../Assets/bjs_3.svg') repeat-x; */
+    background: url('../Assets/bobbyjoesmithiii.svg') repeat-x;
     background-size: auto 84vh;
     background-position-y: 0.9rem;
     min-height: 90vh;
@@ -262,14 +230,6 @@ dd {
     gap: 1rem;
 }
 
-.display-none {
-    display: none;
-}
-
-.hidden {
-    display: none;
-    opacity: 0;
-}
 
 
 
