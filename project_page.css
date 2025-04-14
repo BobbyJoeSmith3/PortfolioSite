@@ -1,0 +1,38 @@
+.project-gallery #back_btn {
+    position: relative;
+    display: block;
+    padding: 0.8rem 1rem;
+    z-index: 1;
+}
+
+.project-gallery-header {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    align-items: center;
+}
+
+.project-gallery-header h1 {
+    justify-self: center;
+}
+
+.project-info {
+    display: grid;
+    grid-template-columns: 2fr 4fr 2fr;
+    padding: 2rem 1rem;
+}
+
+.project-description {
+    justify-self: center;
+    max-width: 50rem;
+    line-height: 1.5;
+}
+
+.project-description p {
+    margin-bottom: 1.5rem;
+}
+
+/* Put carousel navigation into document flow rather than fixed to page */
+.carousel-nav {
+    position: static;
+    bottom: 0;
+}

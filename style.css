@@ -1,8 +1,3 @@
-:root {
-    --after-content: 'flickity';
-
-}
-
 body {
     font-family: 'MaruMono-Regular', Arial, Helvetica, sans-serif;
     font-size: 16px;
@@ -113,16 +108,16 @@ h1 {
     color: white;
 }
 
-#contact_btn {
+.contact_btn {
     background: none;
     border: none;
 }
 
-#contact_btn svg {
+.contact_btn svg {
     transition: transform 0.4s ease;
 }
 
-#contact_btn svg.active {
+.contact_btn svg.active {
     transform: rotate(45deg);
 }
 
@@ -152,13 +147,6 @@ h1 {
 button.selected {
     background-color: #F6600B;
     color: white;
-}
-
-.project-gallery #back_btn {
-    position: relative;
-    display: block;
-    padding: 0.8rem 1rem;
-    z-index: 1;
 }
 
 .main-carousel {
@@ -234,31 +222,7 @@ button.selected {
     border-bottom: solid 1px white;
 }
 
-.project-gallery-header {
-    display: grid;
-    grid-template-columns: 1fr 4fr 1fr;
-    align-items: center;
-}
 
-.project-gallery-header h1 {
-    justify-self: center;
-}
-
-.project-info {
-    display: grid;
-    grid-template-columns: 2fr 4fr 2fr;
-    padding: 2rem 1rem;
-}
-
-.project-description {
-    justify-self: center;
-    max-width: 50rem;
-    line-height: 1.5;
-}
-
-.project-description p {
-    margin-bottom: 1.5rem;
-}
 
 dt {
     margin-top: 1.5rem;

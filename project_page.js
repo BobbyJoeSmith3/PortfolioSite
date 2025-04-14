@@ -9,13 +9,6 @@ var flkty = new Flickity(elem, {
     // fullscreen: true,
 });
 
-// element argument can be a selector string
-//   for an individual element
-// var flkty = new Flickity('.main-carousel', {
-//     // options
-
-// });
-
 const prev_btn = document.querySelector('.previous');
 const next_btn = document.querySelector('.next');
 const page_dots = document.querySelector('.flickity-page-dots');
@@ -34,3 +27,14 @@ next_btn.insertBefore(next_txt, next_btn.querySelector('.flickity-button-icon'))
 car_nav.appendChild(prev_btn);
 car_nav.appendChild(page_dots);
 car_nav.appendChild(next_btn);
+
+/* ======================
+Control-Bar Functionality
+======================== */
+const control_bar = document.querySelector('.contol-bar');
+const contact_btn = document.querySelector('.contact_btn');
+
+// Rotate contact info modal button on click
+contact_btn.addEventListener('click', () => {
+    contact_btn.firstChild.classList.toggle('active');
+});
