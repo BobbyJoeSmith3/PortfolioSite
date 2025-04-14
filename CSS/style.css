@@ -242,7 +242,7 @@ button.selected {
     position: absolute;
     right: 1.2rem;
     top: 3.6rem;
-    background-color:rgb(114, 114, 114);
+    background-color:hsla(0, 0%, 43.5%, 0.75);
     z-index: 1;
 }
 
