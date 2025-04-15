@@ -1,22 +1,11 @@
-
-/* ======================
-Control-Bar Functionality
-======================== */
-const control_bar = document.querySelector('.contol-bar');
-const contact_btn = document.querySelector('.contact_btn');
-
-// Rotate contact info modal button on click
-contact_btn.addEventListener('click', () => {
-    contact_btn.firstChild.classList.toggle('active');
-});
-
-/* ======================
+ /* ======================
 Initialize Flickity
 ======================== */
+// Needs to initialize while page is loading
 
-let carousel = document.querySelector('.main-carousel');
+let $carousel = $('.main-carousel');
 
-const flkty = new Flickity(carousel, {
+$carousel.flickity({
     // options
     imagesLoaded: true,
     draggable: '>1',
@@ -30,33 +19,39 @@ const flkty = new Flickity(carousel, {
     // setGallerySize: false
 });
 
-/* ======================
-Carousel Navigation UI
-======================== */
 
-const car_nav = document.querySelector('.carousel-nav');
-let prev_btn = document.querySelector('.previous');
-let next_btn = document.querySelector('.next');
-let page_dots = document.querySelector('.flickity-page-dots');
-let fullscreen_btn = document.querySelector('.flickity-fullscreen-button');
+$(function() {
+    /* ======================
+    Control-Bar Functionality
+    ======================== */
+    const $control_bar = $('.contol-bar');
+    const $contact_btn = $('.contact_btn');
 
-// Modify Carousel Navigation
-const prev_txt = document.createElement('span');
-prev_txt.textContent = "prev";
-prev_btn.appendChild(prev_txt);
-car_nav.appendChild(prev_btn);
+    // Rotate contact info modal button on click
+    // $contact_btn.addEventListener('click', () => {
+    //     $contact_btn.firstChild.classList.toggle('active');
+    // });
 
-const next_txt = document.createElement('span');
-next_txt.textContent = "next";
-next_btn.insertBefore(next_txt, next_btn.querySelector('.flickity-button-icon'));
-car_nav.appendChild(next_btn);
-car_nav.insertBefore(page_dots, next_btn);
-// Move fullscreen button into carousel
-carousel.insertBefore(fullscreen_btn, carousel.firstChild);
+    $contact_btn.click( ()=> {
+        $contact_btn.children('svg').toggleClass('active');
+    });
 
 
+    /* ======================
+    Carousel Navigation UI
+    ======================== */
+    const $car_nav = $('.carousel-nav');
+    let $prev_btn = $('.previous');
+    let $next_btn = $('.next');
+    let $page_dots = $('.flickity-page-dots');
+    let $fullscreen_btn = $('.flickity-fullscreen-button');
 
+    // Modify Carousel Navigation
+    $car_nav.append($prev_btn).append($page_dots).append($next_btn);
+    $('.previous .flickity-button-icon').after($('<span>prev</span>'));
+    $('.next .flickity-button-icon').before($('<span>next</span>'));
 
-
-
-
+    
+    // Move fullscreen button into carousel
+    $carousel.prepend($fullscreen_btn);
+});
