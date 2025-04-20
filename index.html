@@ -27,49 +27,49 @@
     <section class="bg-marquee"></section>
 
     <section class="main-carousel" data-flickity='{ "fullscreen": true }'>
-        <div class="project carousel-cell">
+        <div class="project carousel-cell TestA">
             <h2>Project One Title</h2>
             <figure><img class="carousel-cell-image" src="Assets/Demo/SMSL-1.jpg">
                 <figcaption class="keywords">#Graphic Design #Photography #Art #TestA</figcaption>
             </figure>
         </div>
-        <div class="project carousel-cell">
+        <div class="project carousel-cell TestB">
             <h2>Project Two Title</h2>
             <figure><img class="carousel-cell-image" src="Assets/Demo/SMSL-2.jpg">
                 <figcaption class="keywords">#Graphic Design #Photography #Art #TestA</figcaption>
             </figure>
         </div>
-        <div class="project carousel-cell">
+        <div class="project carousel-cell TestA">
             <h2>Project Three Title</h2>
             <figure><img class="carousel-cell-image" src="Assets/Demo/SMSL-3.jpg">
                 <figcaption class="keywords">#Graphic Design #Photography #Art #TestA</figcaption>
             </figure>
         </div>
-        <div class="project carousel-cell">
+        <div class="project carousel-cell TestB">
             <h2>Project Four Title</h2>
             <figure><img class="carousel-cell-image" src="Assets/Demo/SMSL-4.jpg">
                 <figcaption class="keywords">#Graphic Design #Photography #Art #TestA</figcaption>
             </figure>
         </div>
-        <div class="project carousel-cell">
+        <div class="project carousel-cell TestC TestB">
             <h2>Project Five Title</h2>
             <figure><img class="carousel-cell-image" src="Assets/Demo/SMSL-5.jpg">
                 <figcaption class="keywords">#Graphic Design #Photography #Art #TestA</figcaption>
             </figure>
         </div>
-        <div class="project carousel-cell">
+        <div class="project carousel-cell TestC">
             <h2>Project Six Title</h2>
             <figure><img class="carousel-cell-image" src="Assets/Demo/SMSL-6.jpg">
                 <figcaption class="keywords">#Graphic Design #Photography #Art #TestA</figcaption>
             </figure>
         </div>
-        <div class="project carousel-cell">
+        <div class="project carousel-cell TestC TestD">
             <h2>Project Seven Title</h2>
             <figure><img class="carousel-cell-image" src="Assets/Demo/SMSL-7.jpg">
                 <figcaption class="keywords">#Graphic Design #Photography #Art #TestA</figcaption>
             </figure>
         </div>
-        <div class="project carousel-cell">
+        <div class="project carousel-cell TestD">
             <h2>Project Eight Title</h2>
             <figure><img class="carousel-cell-image" src="Assets/Demo/SMSL-8.jpg">
                 <figcaption class="keywords">#Graphic Design #Photography #Art #TestA</figcaption>
@@ -91,22 +91,24 @@
             <a href="https://www.linkedin.com/in/bobby-joe-smith-iii-32165b2a/" target="_blank">LinkedIn</a>
         </div>
         <div class="filters">
-            <button type="button" id="all_btn" class="button filter_btn selected" name="All">All</button>
+            <button type="button" id="all_btn" class="button filter_btn selected" name="All" data-filter="*">All</button>
             <button type="button" id="graphicdesign_btn" class="button filter_btn" name="Graphic Design">Graphic Design</button>
             <button type="button" id="photography_btn" class="button filter_btn" name="Photography">Photography</button>
             <button type="button" id="art_btn" class="button filter_btn" name="Art">Art</button>
-            <button type="button" id="testa_btn" class="button filter_btn" name="TestA">Test A</button>
-            <button type="button" id="testb_btn" class="button filter_btn" name="TestB">Test B</button>
-            <button type="button" id="testc_btn" class="button filter_btn" name="TestC">Test C</button>
-            <button type="button" id="testd_btn" class="button filter_btn" name="TestD">Test D</button>
+            <button type="button" id="testa_btn" class="button filter_btn" name="TestA" data-filter="TestA">Test A</button>
+            <button type="button" id="testb_btn" class="button filter_btn" name="TestB" data-filter="TestB">Test B</button>
+            <button type="button" id="testc_btn" class="button filter_btn" name="TestC" data-filter="TestC">Test C</button>
+            <button type="button" id="testd_btn" class="button filter_btn" name="TestD" data-filter="TestD">Test D</button>
         </div>
     </section>
     <!-- Plugins -->
     <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     <script src="https://unpkg.com/flickity-fullscreen@1/fullscreen.js"></script>
+    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
     <!-- Custom -->
     <script src="JS/marquee.js"></script>
+    <script src="JS/project_db.js"></script>
     <script src="JS/main.js"></script>
 
 </body>
