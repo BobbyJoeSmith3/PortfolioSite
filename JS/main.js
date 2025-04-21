@@ -34,12 +34,25 @@ $(function() {
     });
 
     $('.filters').on('click', 'button', function() {
+        // Filter Engine
         let filterValue = $(this).attr('data-filter');
-        console.log(filterValue);
         let $cellElements = $carousel.flickity('getCellElements');
+        let $filterButtons = $('.filters').children('button');
+        // Apply selected class to selected filter button
+        $filterButtons.each( function () {
+            if ($(this).attr('data-filter') == filterValue) {
+                if ($(this).hasClass('selected') == false) {
+                    $(this).addClass('selected');
+                }
+            } else if ($(this).hasClass('selected')) {
+                $(this).removeClass('selected');
+            }
+        });
+        // Remove projects from carousel
         $($cellElements).each( function () {
             $carousel.flickity('remove', $(this));
-        })
+        });
+        // Add only filtered projects to carousel
         filterProjects(filterValue);
         $('.flickity-viewport').imagesLoaded().always(function() {
             resize_carousel();
@@ -49,7 +62,13 @@ $(function() {
 
     function filterProjects (filterValue) {
         for (let project of allProjects) {
-            if (project.keywords.includes(filterValue)) {
+            if (filterValue == '*') {
+                let proj = document.createElement('div');
+                $(proj).addClass(`project carousel-cell ${project.keywords.join(' ')}`);
+                let htmlString = `<h2>${project.title}</h2><figure><img class="project carousel-cell-image ${project.keywords.join(" ")}" src="${project.src}"><figcaption class="keywords">#${project.keywords.join(" #")}</figcaption></figure>`;
+                $(proj).append(htmlString);
+                $carousel.flickity('append', proj);
+            } else if (project.keywords.includes(filterValue)) {
                 let proj = document.createElement('div');
                 $(proj).addClass(`project carousel-cell ${project.keywords.join(' ')}`);
                 let htmlString = `<h2>${project.title}</h2><figure><img class="project carousel-cell-image ${project.keywords.join(" ")}" src="${project.src}"><figcaption class="keywords">#${project.keywords.join(" #")}</figcaption></figure>`;
